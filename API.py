@@ -15,9 +15,10 @@ def update():
   parsed_ads = ads.ads
 
   new_ads = [ad for ad in parsed_ads if ad['id'] not in old_ads]
-  [Operations.SaveAd(ad) for ad in new_ads]
 
-  msg = MSG(new_ads)
+  if len(new_ads) is not 0:
+    [Operations.SaveAd(ad) for ad in new_ads] 
+    msg = MSG(new_ads)
 
   return jsonify(new_ads)
 

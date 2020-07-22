@@ -1,20 +1,30 @@
 import discord
+import asyncio
 
-def send_messages(ads):
-  client = discord.Client()
 
-  client.loop.create_task(my_background_task(client, ads))
-  client.run('NzMyNzEwMzYxMDE0NDY4NzA2.Xw4j6Q.bV2KjT3_dCAGjosSTTv_7pYeEWI')
+class MSG:
 
-async def my_background_task(client, ads):
+  def __init__(self, ads):
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(asyncio.new_event_loop())
 
-  for message in ads:
-    msg = '{}\n{}\n{}'.format(message['title'], message['payment'], message['url'])
-    await client.wait_until_ready()
-    channel = client.get_channel(732680171143954482)
-    await channel.send(msg)
+    self.ads = ads
+    self.client = discord.Client()
+    self.send_messages()
 
-  await client.close()
+  def send_messages(self):
+    self.client.loop.create_task(self.my_background_task())
+    self.client.run('NzMyNzEwMzYxMDE0NDY4NzA2.Xw4j6Q.bV2KjT3_dCAGjosSTTv_7pYeEWI')
+
+  async def my_background_task(self):
+
+    for message in self.ads:
+      msg = '{}\n{}\n{}'.format(message['title'], message['payment'], message['url'])
+      await self.client.wait_until_ready()
+      channel = self.client.get_channel(732680171143954482)
+      await channel.send(msg)
+
+    await self.client.close()
 
 if __name__ == "__main__":
 

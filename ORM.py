@@ -78,3 +78,4 @@ session = Session()
 
 if __name__ == "__main__":
   print(os.environ.get('DATABASE'))
+  print(Operations.GetAll())

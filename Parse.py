@@ -1,9 +1,6 @@
 from bs4 import BeautifulSoup
-import urllib3
 from selenium import webdriver
-import selenium as se
 from selenium.webdriver.firefox.options import Options
-from bs4 import BeautifulSoup
 import codecs
 
 BASE_URL = 'https://www.upwork.com{}'
@@ -80,7 +77,7 @@ def getHourly(soup):
   return ads
 
 if __name__ == "__main__":
-  parseSites = Ads(['scrap'], True)
+  parseSites = Ads(['scrap'], False)
   for x in parseSites.ads:
     print(x['payment'])
   #driver = openPage('https://www.upwork.com/job/Leads-generator_~01332fb131cfa88ea0/')

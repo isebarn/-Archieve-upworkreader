@@ -1,5 +1,4 @@
 import discord
-import asyncio
 
 class Discord:
   def __init__(self, ads):

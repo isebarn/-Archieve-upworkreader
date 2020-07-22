@@ -19,7 +19,7 @@ def update():
 
   msg = MSG(new_ads)
 
-  return jsonify([x.Readable() for x in Operations.GetAll()])
+  return jsonify(new_ads)
 
 
 @app.route('/msg')

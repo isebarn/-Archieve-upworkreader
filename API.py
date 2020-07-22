@@ -2,7 +2,7 @@ from ORM import Operations
 from Parse import Ads
 from flask import Flask, jsonify
 import asyncio
-from Discord import MSG
+from Webhook import send_messages
 
 app = Flask(__name__)
 
@@ -18,7 +18,7 @@ def update():
 
   if len(new_ads) is not 0:
     [Operations.SaveAd(ad) for ad in new_ads] 
-    msg = MSG(new_ads)
+    send_messages(new_ads)
 
   return jsonify(new_ads)
 
@@ -27,7 +27,7 @@ def update():
 def msg():
 
   ads = [{'id': '01d33e2d5b0742ea28', 'title': 'Lead generation to find MSPs in USLead generation to find MSPs in US', 'url': 'https://www.upwork.com/job/Lead-generation-find-MSPs_~01d33e2d5b0742ea28/', 'payment': 'Fixed: $10'}]
-  msg = MSG(ads)
+  send_messages(ads)
 
   return jsonify(ads)
 
